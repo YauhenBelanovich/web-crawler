@@ -15,7 +15,7 @@ COPY spring-boot-module/src /opt/app/spring-boot-module/src
 
 RUN mvn -B -e clean install -DskipTests=true
 
-FROM openjdk:8-alpine
+FROM openjdk:11-alpine
 WORKDIR /opt/app
 COPY --from=builder /opt/app/spring-boot-module/target/spring-boot-module-0.0.1-SNAPSHOT.jar .
 EXPOSE 8081
