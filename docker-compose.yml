@@ -21,7 +21,7 @@ services:
           - "80:8000"
     restart: always
     depends_on:
-      - sts_backend
+      - crawler_backend
     networks:
       - frontend
 
