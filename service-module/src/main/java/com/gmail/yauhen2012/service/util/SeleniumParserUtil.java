@@ -43,7 +43,6 @@ public class SeleniumParserUtil {
                 .filter(e -> e.startsWith("http"))
                 .collect(Collectors.toSet());
 
-        //writeToFile(link, data);
         writeCSV(link, data);
 
         return uniqueLinks;
