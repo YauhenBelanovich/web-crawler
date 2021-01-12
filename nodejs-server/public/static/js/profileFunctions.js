@@ -39,6 +39,35 @@ function validate() {
 document.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         runCrawler();
+        afterRunningMessage();
     }
 })
 
+document.getElementById("run").addEventListener("click", function() {
+    runCrawler();
+    afterRunningMessage();
+  });
+
+function dounloadCSV(fileName) {
+    const xhr = new XMLHttpRequest()
+
+        xhr.open('GET', '/api/download/' + fileName)
+        xhr.setRequestHeader('Content-Type', 'application/json')
+
+        xhr.responseType = 'blob';
+
+        xhr.onload = () => {
+            if (xhr.status >= 400) {
+                xhr.response;
+            } 
+        }
+        xhr.onerror = () => {
+            xhr.response;
+        }
+        xhr.send();
+}
+
+function afterRunningMessage() {
+    document.getElementById("afterRun").style.display = "block";
+    document.getElementById("mainBlock").style.display = "none";
+}
